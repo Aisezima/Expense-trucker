@@ -4,8 +4,10 @@ import "./Expenses.css"
 import Card from '../../ui/Card'
 import ExpenseFilter from './ExpenseFilter'
 import { useState } from 'react'
+import ExpensesChart from './ExpensesChart'
 
 const Expenses = (props) => {
+
 
     const [selectedYear, setSelectedYear] = useState('2022')
 
@@ -18,41 +20,41 @@ const Expenses = (props) => {
     const  filteredExpenses = props.expenses.filter((el) => {
         return el.date.getFullYear().toString() === selectedYear
     })
-    console.log(filteredExpenses);
 
+
+    
+    let expenseContext  = <h1 style = {{color: 'red'}}>No expense found</h1>
+    if(filteredExpenses.length > 0) {
+        expenseContext = filteredExpenses.map((el) => {
+            return (
+            <ExpenseItem 
+            key={el.id} 
+            title={el.title} 
+            date={el.date} 
+            amount={el.amount}/>
+            )
+        })
+    }
+
+
+   if(selectedYear === 'all' ){
+    expenseContext = props.expenses.map((el) => {
+        return (
+         <ExpenseItem 
+        key={el.id} 
+        title={el.title} 
+        date={el.date} 
+        amount={el.amount}/>
+        )
+    })
+}
+   
     return (
         <Card className="expenses"  >
+            <ExpensesChart expenses={props.expenses} />
             <ExpenseFilter onGetFilterData={getFilterDataHandler} selected={selectedYear}/>
-
-            {filteredExpenses.map((el) => {
-                return <ExpenseItem 
-                key={el.id} 
-                title={el.title} 
-                date={el.date} 
-                amount={el.amount}/>
-            })}
-{/*         
-        //  бул метод менен кылсак болот бирк бул таза код боолуп эсептелтнбейт 
-        // жана бул жолду биз колдонбойбуз
-        /* <ExpenseItem
-        title={props.expenses[0].date} 
-        date={props.expenses[0].date}
-        amount={props.expenses[0].amount}/> 
-        <ExpenseItem
-        title={props.expenses[1].date} 
-        date={props.expenses[1].date}
-        amount={props.expenses[1].amount}/> 
-        <ExpenseItem
-        title={props.expenses[2].date} 
-        date={props.expenses[2].date}
-        amount={props.expenses[2].amount}/> 
-        <ExpenseItem
-        title={props.expenses[3].date} 
-        date={props.expenses[3].date}
-        amount={props.expenses[3].amount}/>  */}
-          
+            {expenseContext}
          </Card>
     )
-} 
-
+        } 
 export default Expenses

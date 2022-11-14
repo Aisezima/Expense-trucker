@@ -23,7 +23,7 @@ const ExpenseForm  =(props) => {
         const inputData = {
             id: Date.now().toString(),
             title: title,
-            amount: amount,
+            amount: Number(amount),
             date: new Date(date),
         }
 

@@ -12,5 +12,4 @@ const NewExpenses = (props) => {
          </div>
     )
 }
-
 export default NewExpenses
