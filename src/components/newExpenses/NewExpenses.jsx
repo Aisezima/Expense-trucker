@@ -1,14 +1,17 @@
-import React from 'react'
-import ExpenseForm from './ExpenseForm'
-import "./NewExpenses.css"
-const NewExpenses = (props) => {
+// NewExpenses    Apptan import kylyndy
 
-     const saveExpenseDataHandler = (expenseData) =>{
-        props.onGet(expenseData)
+import React from 'react'    //okulushuna jakshy  jaazbasak da ishteit
+import ExpenseForm from './ExpenseForm'  //import kuldyk
+import "./NewExpenses.css"
+const NewExpenses = (props) => {  //callback function tuzup  props aldyk
+
+     const saveExpenseDataHandler = (expenseData) =>{  //   function achtyk   backtin dannyiyn saldyk
+        props.onGet(expenseData) //lifting up arkyluu  backten kelgen dannyidy aptan aldyk
      }
     return (
         <div className='new-expense'> 
-        <ExpenseForm  onSave ={saveExpenseDataHandler}/>
+        <ExpenseForm  onSave ={saveExpenseDataHandler}/> 
+              {/* function dogu logicabyzdy onSavege saldyk  */} // ExpenseFormdan onSave dep ala alabyz
          </div>
     )
 }

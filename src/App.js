@@ -1,10 +1,9 @@
-import './App.css';
-import NewExpenses from './components/newExpenses/NewExpenses';
-import Expenses from "./components/expenses/Expenses"
+import './App.css'; // appty  import kylyndy  react ozy kyldy
+import NewExpenses from './components/newExpenses/NewExpenses'; // NewExpensesти  import кылдык
+import Expenses from "./components/expenses/Expenses"  // expensesti import kyldyk
 import { useState } from 'react';
 
-const expenseData = [
-
+const expenseData = [ // backendten keldi birok   bul feik  massivge salyp keldik
   {
     id: 'el1',
     date: new Date (2022, 3, 22),
@@ -29,16 +28,16 @@ const expenseData = [
     title: 'paper',
     amount: 100,
   }, 
-];
+];// backendden kelgen dannyilar
 
 
 
 function App() {
-  const [totalExpenses, setExpenses] = useState(expenseData)
+  const [totalExpenses, setExpenses] = useState(expenseData) //useState koldonduk , backten kelgen dannyidi saldyk
+// totalExpenses peremennyidun aty, setTotalExpenses function
 
-
-const getExpenseDataHandler = (liftingData) => {
-    setExpenses((prevState) => {
+const getExpenseDataHandler = (liftingData) => {   // function achtyk l iting datany saldyk
+    setExpenses((prevState) => { //
       return  [liftingData, ...prevState]
     })
   

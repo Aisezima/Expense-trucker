@@ -1,9 +1,9 @@
   import React from 'react'
-  import Chart from '../Chart/Chart'
-  
-  const ExpensesChart  = (props) =>{
-    const chartDataPoints  = [
-        {label: 'Jan' , value: 0},
+  import Chart from '../Chart/Chart'   //Chart componenti import kyldyk
+ 
+  const ExpensesChart  = (props) =>{ //peremennyi actyk, props aldyk
+    const chartDataPoints  = [ //massiv achtyl anyn ichine maani saldyk
+        {label: 'Jan' , value: 0}, 
         {label: 'Feb' , value: 0},
         {label: 'Mac' , value: 0},
         {label: 'Apr' , value: 0},
@@ -17,14 +17,15 @@
         {label: 'Dec' , value: 0},
 
     ];
-    
-    for (const expense of props.expenses) {
-        const expenseMonth = expense.date.getMonth() 
-        chartDataPoints[expenseMonth].value += expense.amount
+    //iterarsia kylabyz
+    for (const expense of props.expenses) { 
+        const expenseMonth = expense.date.getMonth()  // getMoth bizge ailardyn indexin kaitarat
+        chartDataPoints[expenseMonth].value += expense.amount  //valuaeleri  +=(koshup barabardygyn chygaryp beret)
     }
 
     return (
-        <Chart dataPoints ={chartDataPoints}/>
+        <Chart dataPoints ={chartDataPoints}/> 
+        // chartDataPointsdyn maanisin Chartga otkorup berdik lifting up arkyluu
     )
   }
 
