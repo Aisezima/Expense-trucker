@@ -10,7 +10,7 @@ import ChartBar from './ChartBar'
             {props.dataPoints.map(data => {
                 return (
                     <ChartBar
-                     key = {data.label} 
+                     key = {data.label}  //ar bir jsx koddun ozunun key bolushsu kerek 
                      value  = {data.value} 
                      label ={data.label}
                      maxValue = {maxValue}/>
@@ -19,5 +19,5 @@ import ChartBar from './ChartBar'
         </div>
     )
  }           
-
  export default Chart
+ 
