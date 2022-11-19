@@ -21,5 +21,5 @@ import ChartBar from './ChartBar' // Chart CharBardy chakyrat
         </div>
     )
  }           
-
  export default Chart
+ 
