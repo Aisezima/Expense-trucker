@@ -16,3 +16,5 @@ const NewExpenses = (props) => {  //callback function tuzup  props aldyk
     )
 }
 export default NewExpenses
+
+
